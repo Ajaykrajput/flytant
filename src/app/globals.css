@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #1B1B1B;
+  --primary: #FFFFFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
+  --color-primary: var(--primary);
+  --color-secondary: #603ce599;
+  --color-tertiory: #603ae51a;
+  --color-muted: #8181a5;
+  --color-border: #E5E3E3;
+  --color-disabled: #f6f6f6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #FFFFFF;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* background: var(--background); 
+   color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer {
+  .btn-primary {
+    @apply px-5 py-2.5 bg-background text-white font-medium text-sm md:text-base leading-tight rounded-lg shadow-md hover:bg-slate-800 hover:shadow-lg focus:bg-slate-800 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out;
+  }
+  .btn-primary-outline {
+    @apply px-3 py-3 text-sm md:text-base font-medium text-black transition-all duration-150 ease-linear bg-foreground border-2 border-border hover:border-border border-solid rounded-lg outline-none hover:bg-border  active:bg-border focus:outline-none;
+  }
+  .btn-secondary-outline {
+    @apply px-3 py-2 text-sm md:text-base font-medium text-primary transition-all duration-150 ease-linear bg-border border-2 border-gray-300 border-solid rounded-lg outline-none hover:bg-blue-800 hover:text-white active:bg-blue-800 focus:outline-none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
