@@ -1,14 +1,11 @@
 import dbConnect from "@/lib/dbConnect";
 import TodoModel from "@/model/Todo.model";
-import { NextResponse } from "next/server"; // ✅ Use NextResponse in app directory
+import { NextResponse } from "next/server";
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { todoid: string } }
-) {
-  const todoId = params.todoid;
+export async function PUT(request: Request) {
+  const url = new URL(request.url);
+  const todoId = url.pathname.split("/").pop();
   const { newTitle: title, newDescription: description } = await request.json();
-  console.log("%%%%%%%%%%%%,", title, description);
 
   if (!todoId) {
     return NextResponse.json(

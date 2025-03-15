@@ -77,7 +77,7 @@ const TodoSection: React.FC<TodoSectionProps> = ({
             console.error(error);
           }
         },
-        500
+        1000
       );
     }
   }, [todo, fetchTodos]);
@@ -150,7 +150,8 @@ const TodoSection: React.FC<TodoSectionProps> = ({
             onBlur={() => setShowEditTitle(false)}
           />
         ) : (
-          <span title="Click on title to edit"
+          <span
+            title="Click on title to edit"
             className="text-4xl font-semibold max-w-[80%] truncate cursor-pointer"
             onClick={() => setShowEditTitle(true)}
           >
@@ -169,7 +170,10 @@ const TodoSection: React.FC<TodoSectionProps> = ({
         </button>
       </div>
 
-      <div className=" w-full h-full mt-10 p-4" title="Click on description content to edit the todo">
+      <div
+        className=" w-full h-full mt-10 p-4"
+        title="Click on description content to edit the todo"
+      >
         <DescriptionEditor
           description={newDescription}
           onChange={handleDescriptionChange}

@@ -2,11 +2,10 @@ import dbConnect from "@/lib/dbConnect";
 import TodoModel from "@/model/Todo.model";
 import { NextResponse } from "next/server";
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { todoid: string } }
-) {
-  const todoId = params.todoid;
+export async function DELETE(request: Request) {
+  const { pathname } = new URL(request.url);
+  const segments = pathname.split("/");
+  const todoId = segments[segments.length - 1];
 
   if (!todoId) {
     return NextResponse.json(
